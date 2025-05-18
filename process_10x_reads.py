@@ -39,32 +39,3 @@ metadata.merge(
     on='Cell_ID',
     how='inner'
 ).to_parquet('Data/parquet_output/')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# reads_10x = pd.read_table(
-#     'Data/10x_reads.tsv', 
-#     sep='\t', 
-#     header=None
-# )
-
-# reads_10x = reads_10x.T
-
-# reads_10x.columns = reads_10x.iloc[0]
-# reads_10x = reads_10x[1:]
-
-# metadata_cols = ['Cell_ID', '10x_barcode', 'patient', 'time', 'sample_ID', 'clst', 'TSNE_x', 'TSNE_y']
-# reads_10x = reads_10x.melt(id_vars=metadata_cols, var_name='gene', value_name='read')
-
-# reads_10x.drop(columns=['clst', 'TSNE_x', 'TSNE_y'], inplace=True)
