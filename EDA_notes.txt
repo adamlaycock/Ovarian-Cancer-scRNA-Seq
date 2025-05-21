@@ -1,3 +1,0 @@
-Basic Information:
-scRNA-Seq reads for 11548 genes of 9609 cells from 6 patients across two timepoints. Data is taken from 8 samples.
-

@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Read parquet directory with processed reads
-reads_10x = dd.read_parquet('Data/parquet_output')
+reads_10x = dd.read_parquet('../data/parquet_output')
 dtypes_dict = {
     'Cell_ID': 'string',
     '10x_barcode': 'string',

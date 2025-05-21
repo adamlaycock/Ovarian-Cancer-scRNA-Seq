@@ -4,7 +4,7 @@ import pandas as pd
 
 # Read metadata rows
 metadata = pd.read_table(
-    'Data/10x_reads.tsv', 
+    '../data/10x_reads.tsv', 
     sep='\t', 
     header=None, 
     nrows=8
@@ -38,4 +38,4 @@ metadata.merge(
     ),
     on='Cell_ID',
     how='inner'
-).to_parquet('Data/parquet_output/')
+).to_parquet('../data/parquet_output/')
