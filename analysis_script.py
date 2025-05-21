@@ -36,20 +36,22 @@ def check_unique (reads_df):
         return False
     else:
         return True
+    
+def plot_cell_contribution(reads_df):
+    cell_counts_per_patient = reads_df.groupby('patient')['Cell_ID'].nunique().compute()
+    cell_counts_df = cell_counts_per_patient.reset_index()
+    cell_counts_df.columns = ['patient', 'unique_cell_count']
 
-cell_counts_per_patient = reads_10x.groupby('patient')['Cell_ID'].nunique().compute()
-cell_counts_df = cell_counts_per_patient.reset_index()
-cell_counts_df.columns = ['patient', 'unique_cell_count']
+    plt.figure()
+    fig = sns.barplot(
+        x='patient',
+        y='unique_cell_count',
+        data=cell_counts_df
+    )
+    fig.bar_label(fig.containers[0])
 
-plt.figure()
-fig = sns.barplot(
-    x='patient',
-    y='unique_cell_count',
-    data=cell_counts_df
-)
-fig.bar_label(fig.containers[0])
+    plt.xlabel('Patient ID')
+    plt.ylabel('Number of Cells')
+    plt.title('Patient Cell Contribution')
+    plt.show()
 
-plt.xlabel('Patient ID')
-plt.ylabel('Number of Cells')
-plt.title('Patient Cell Contribution')
-plt.show()
