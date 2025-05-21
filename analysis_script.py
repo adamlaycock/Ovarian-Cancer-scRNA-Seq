@@ -55,3 +55,21 @@ def plot_cell_contribution(reads_df):
     plt.title('Patient Cell Contribution')
     plt.show()
 
+def plot_average_read_dist(reads_df):
+    mean_read_cells = reads_df.groupby('Cell_ID')['read'].mean().compute()
+    mean_read_df = mean_read_cells.reset_index()
+    mean_read_df.columns = ['cell_id', 'average_read']
+
+    plt.figure()
+
+    sns.displot(
+        x='average_read',
+        data=mean_read_df,
+        kind='hist'
+    )
+
+    plt.xlabel('Average Read')
+    plt.title('Distribution of Average Read from Cells')
+
+    plt.show()
+
